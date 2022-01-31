@@ -1,17 +1,14 @@
 package com.yebelo.service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
-import java.util.function.Function;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.repository.query.FluentQuery.FetchableFluentQuery;
+import org.springframework.http.ResponseEntity;
 
 import com.yebelo.entity.Category;
+import com.yebelo.helper.Helper;
 import com.yebelo.repository.CategoryRepository;
 
 public class CategoryService {
@@ -38,4 +35,18 @@ public class CategoryService {
 		 return this.categoryRepository.findAll();
 	 }
 	 
+	 ResponseEntity<?> fetchNextNumber(Category c){
+		 try {
+
+			 Category category = this.categoryRepository.findByCategoryCode(c.getCategoryCode());
+			 int oldValue = category.getValue();
+			 category.setValue(Helper.fetchNextNumber(oldValue));
+			 this.categoryRepository.save(category);
+			 return ResponseEntity.ok(Map.of("old value",oldValue,"new value",category.getValue()));
+		 }
+		 catch (Exception e) {
+			 
+		}
+		 return ResponseEntity.ok(Map.of("message","error!! something went wrong","status","error"));
+	 }
 }
