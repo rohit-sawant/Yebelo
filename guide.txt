@@ -1,0 +1,24 @@
+POSTMAN API link : https://www.getpostman.com/collections/0985ed8186c58f99ab43 
+
+GET : http://localhost:8080/category - get all categories
+
+GET : http://localhost:8080/category/{id} - get a category by id, replace the id with your id 
+
+POST : http://localhost:8080/category - add a new category
+request body (json) :  
+{
+        "categoryCode": 142,
+        "value": 20
+}
+
+DELETE : http://localhost:8080/category/{id} - delete a category by id 
+
+POST : http://localhost:8080/FetchNextNumber - fetches the next number according to the function and upadte it database and returns old value and new value
+request body(json) :
+{
+		"categoryCode":141
+} 
+
+
+
+
