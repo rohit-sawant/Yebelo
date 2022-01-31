@@ -1,5 +1,6 @@
 package com.yebelo.controller;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -26,9 +27,17 @@ public class CategoryController {
 	@GetMapping("/category/{id}")
 	public ResponseEntity<?> getCategoryById(@PathVariable("id") int id) {
 		Optional<Category> category = this.categoryService.getCategoryById(id);
-		return ResponseEntity.of(category).status(HttpStatus.OK).build();
+		if(category.isPresent()) {
+
+			return ResponseEntity.ok(category);
+		}
+		return ResponseEntity.noContent().build();
 	}
-	
+	@GetMapping("/category")
+	public ResponseEntity<?> getCategories() {
+		List<Category> category = this.categoryService.getAllCategory();
+		return ResponseEntity.ok(category);
+	}
 	@PostMapping("/category")
 	public ResponseEntity<?> saveCategory(@RequestBody Category category){
 		try {
