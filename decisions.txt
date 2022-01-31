@@ -1,0 +1,18 @@
+Pattern used:
+J2EE MVC Pattern 
+
+Architectural:
+
+Controller - Rest Controller for Category 
+           |
+           v
+Service - CategoryService (Business logic)
+           |
+           v
+Repostiory - CategoryRepository, Category (Entity & Interface) 
+           |
+           v
+Spring data Jpa
+           |
+           v
+Hibernate framework  <-- jdbc  --> driver

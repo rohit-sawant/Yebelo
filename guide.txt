@@ -20,5 +20,11 @@ request body(json) :
 } 
 
 
+---------------------------Features----------------------------
+
+- Crud application for Category.
+- a helper class to fetch next number according to the requirement.
+
+
 
 
