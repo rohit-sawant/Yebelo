@@ -17,8 +17,14 @@ public class CategoryService {
 	@Autowired
 	private CategoryRepository categoryRepository;
 	
-	 public Category saveCategory(Category category) {
-		return this.categoryRepository.save(category);
+	 public void saveCategory(Category category) {
+		 try {
+
+			 this.categoryRepository.save(category);
+		 }
+		 catch (Exception e) {
+			 throw e;
+		}
 	}
 	 
 	 public List<Category> saveAllCategory(List<Category> categories) {

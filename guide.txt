@@ -1,4 +1,5 @@
 POSTMAN API link : https://www.getpostman.com/collections/0985ed8186c58f99ab43 
+Video link : https://drive.google.com/file/d/1mpInSc9-f1ZwyvpZVOoDrwuixPzYUhsr/view?usp=sharing
 
 GET : http://localhost:8080/category - get all categories
 

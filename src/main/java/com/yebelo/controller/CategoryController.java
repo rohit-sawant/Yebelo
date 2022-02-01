@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -43,6 +44,10 @@ public class CategoryController {
 		try {
 			this.categoryService.saveCategory(category);
 			return ResponseEntity.ok().build();
+		}
+		catch (DataIntegrityViolationException ed) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("message","category already exist","status","error"));
+			
 		}
 		catch (Exception e) {
 			e.printStackTrace();
